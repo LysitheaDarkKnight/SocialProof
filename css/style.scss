@@ -1,0 +1,197 @@
+// Colors & Fonts
+
+$text-background-color: rgba(31,38,48,255);
+$text-color: hsl(303, 10%, 53%);
+$primary-color: hsl(300, 43%, 22%);
+$title-color: hsl(333, 80%, 67%);
+$bar-color: hsl(300, 24%, 96%);
+$submit-click-color: hsl(0, 0%, 100%);
+$img-color: #3d4051;
+$outfit: 'League Spartan', sans-serif;
+
+@import 'utilities';
+@import 'functions';
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    font-family: $outfit;
+    height: 100vh;
+}
+
+// Background
+
+#background{
+    height: 100vh;
+    position: relative;
+    .background-top{
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -1;
+    }
+    
+    .background-bottom{
+        background-repeat: no-repeat;
+        background-size: cover;
+        // width: 100%;
+        position: absolute;
+        bottom: 0;
+        right:0;
+        z-index: -1;
+    }
+    
+    // Showcase
+
+    .showcase{
+
+        // Showcase Text
+
+        .showcase-text{
+            h1{
+                color: $primary-color;
+                line-height: 3.5rem;
+            }
+
+            p{
+                color: $text-color;
+            }
+        }
+
+        // Showcase Review
+
+        .showcase-review{
+            list-style-type: none;
+            .card{
+                font-weight: 700;
+                color: $primary-color;
+                background-color: $bar-color;
+                margin: 15px 0;
+                width: 80%;
+                border-radius: 10px;
+                padding: 1em 3em;
+                &::before{
+                    content: '';
+                    width: 100px;
+                    height: 1rem;
+                    margin-right: 3em;
+                    display: block;
+                    background-image: url(../images/icon-star.svg);
+                    margin-bottom: .5rem;
+                    background-repeat: space;
+                }
+
+                &:nth-of-type(1){
+                    margin-right: auto;
+                }
+                &:nth-of-type(2){
+                    margin: 0 auto;
+                }
+                &:nth-of-type(3){
+                    margin-left: auto;
+                }
+
+            }
+        }
+    }
+
+    // Testimonials
+
+    .testimonials{
+        .card{
+            @include set-background($primary-color);
+            padding: 40px 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            &:first-of-type{
+                margin-top: 0;
+            }
+            &:last-of-type{
+                margin-bottom: 0;
+            }
+        }
+
+        .card__header{
+            padding-bottom: 30px;
+            img{
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                margin-right: 20px;
+            }
+
+            p{
+                color: $title-color;
+            }
+        }
+    }
+}
+
+// Tablets and under
+
+@media(max-width: 768px){
+
+    .container{
+        width: 100%;
+        padding: 80px 25px 0 25px;
+    }
+
+    .grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        gap: 50px;
+    }
+
+    .grid-testimonials{
+        gap: 15px;
+    }
+
+    #background{
+        height: auto;
+        .showcase{
+            .showcase-text{
+                margin-top: 40px;
+                
+                h1, p{
+                    text-align: center;
+                }
+            }
+            .showcase-review{
+                gap: 15px;
+                .flex{
+                    flex-direction: column;
+                } 
+                .card{
+                    align-items: center;
+                    margin-left: auto;
+                    margin-right: auto;
+                    width: 100%;
+                    &::before{
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            }
+        }
+        
+        .testimonials{
+            padding-bottom: 50px;
+            .card{
+                margin: 0;
+            }
+        }
+}
+
+}
+
+
